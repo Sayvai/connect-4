@@ -27,7 +27,7 @@ const getDiagonalStartPositions = (col = 0, row = 0): DiagonalStartPositions => 
   return [startColDiagonalBottomLeft, startRowDiagonalBottomLeft, startColDiagonalBottomRight, startRowDiagonalBottomRight]
 }
 
-const getDiagonalPieces = (board: Player[][], side: DiagonalSide, startColPos = 0, startRowPos = 0): number[] => {
+const getDiagonalPieces = (board: Player[][], side: DiagonalSide, startColPos = 0, startRowPos = 0): Player[] => {
   const isDiagonalLeft = side === DiagonalSide.Left;
   const reducerFunctionName = isDiagonalLeft ? 'reduce' : 'reduceRight'; // dynamically decide which reducer function to use at runtime dependent on the diagonal direction of pieces we are validating against
 
