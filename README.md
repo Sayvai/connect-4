@@ -10,6 +10,10 @@ We have created a very simple Connect 4 game using some of our favorite [front-e
 
 `npm t` - run the tests
 
+`npm run e2e` - run the e2e tests interactively (Cypress)
+
+`npm run e2e:headless` - run the e2e tests headlessly (Cypress)
+
 ## Possible Improvements
 
 - Persist game state between sessions

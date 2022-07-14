@@ -16,7 +16,7 @@ const GameControls: FC = () => {
   };
 
   return (
-    <Button onClick={handleReset} isDisabled={!board.some((col) => col.length)}>
+    <Button onClick={handleReset} isDisabled={!board.some((col) => col.length)} aria-label="Reset">
       Reset
     </Button>
   );

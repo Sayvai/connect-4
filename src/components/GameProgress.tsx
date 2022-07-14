@@ -9,9 +9,11 @@ const GameProgress: FC = () => {
   const gameOver = useRecoilValue(gameOverState);
   const name = playerName[player];
 
+  const text = gameOver ? `${name} wins!` : `${name}'s turn`;
+
   return (
-    <Heading as="h3" size="lg">
-      {gameOver ? `${name} wins!` : `${name}'s turn`}
+    <Heading as="h3" size="lg" aria-label={text}>
+      {text}
     </Heading>
   );
 };

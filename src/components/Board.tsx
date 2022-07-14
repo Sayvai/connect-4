@@ -15,10 +15,18 @@ const Board: FC = () => {
   const player = useRecoilValue(playerState);
   const gameOver = useRecoilValue(gameOverState);
 
+  const defaultCircleText = 'game board circle';
+
+  const colourNameMap: Record<string, string> = {
+    '#f10000': 'red',
+    '#ece100': 'yellow',
+  }
+
   return (
-    <Flex justify="center">
+    <Flex justify="center" aria-label="game board">
       {board.map((col, i) => (
         <Flex
+        aria-label="game board column"
           key={i}
           role="group"
           onClick={() => play(i)}
@@ -27,6 +35,7 @@ const Board: FC = () => {
         >
           {padCol(col).map((p, j) => (
             <Circle
+              aria-label={playerColor[p as Player] ? `${defaultCircleText} ${colourNameMap[playerColor[p as Player]]}` : `${defaultCircleText} grey`}
               m={1}
               size="40px"
               key={`${i}-${j}`}
