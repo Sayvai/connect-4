@@ -4,10 +4,11 @@ import GameControls from "components/GameControls";
 import GameProgress from "components/GameProgress";
 import { FC } from "react";
 import { RecoilRoot } from "recoil";
+import { initState } from 'utils'
 
 const App: FC = () => (
   <ChakraProvider>
-    <RecoilRoot>
+    <RecoilRoot initializeState={initState}>
       <Container py={4} as={VStack}>
         <Board />
         <GameProgress />

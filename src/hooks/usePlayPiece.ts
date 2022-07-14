@@ -1,7 +1,8 @@
 import { boardCols, boardRows } from "const";
-import { useRecoilState } from "recoil";
+import { useRecoilCallback, useRecoilState } from "recoil";
 import { boardState, gameOverState, playerState } from "state";
 import { DiagonalSide, DiagonalStartPositions, Player } from "types";
+import { processSnapshot } from "utils";
 
 const testWin = (arr: number[]): boolean => /1{4}|2{4}/.test(arr.join(""));
 
@@ -52,6 +53,10 @@ const usePlayPiece = () => {
   const [player, setPlayerTurn] = useRecoilState(playerState);
   const [gameOver, setGameOver] = useRecoilState(gameOverState);
 
+  const saveState = useRecoilCallback(({ snapshot }) => () => {
+    processSnapshot(snapshot);
+  })
+
   return (col: number) => {
     // Prevent adding a piece when the game is over
     if (gameOver) {
@@ -84,6 +89,9 @@ const usePlayPiece = () => {
     }
 
     setBoard(newBoard);
+
+    // persist the current state to local storage
+    saveState();
   };
 };
 
